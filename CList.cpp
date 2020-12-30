@@ -31,17 +31,17 @@ namespace hw2 {
 		this->info = info;
 		return true;
 	}
-	void CNode::save(ofstream& outfile)const
+	bool CNode::save(ofstream& outfile)const
 	{
-		this->info->save(outfile);
+		return this->info->save(outfile);
 	}
-	void CNode::serialSave(ofstream& outfile)const
+	bool CNode::serialSave(ofstream& outfile)const
 	{
-		this->info->serialSave(outfile);
+		return this->info->serialSave(outfile);
 	}
-	void CNode::pSerialSave(ofstream& outfile)const
+	bool CNode::pSerialSave(ofstream& outfile)const
 	{
-		this->info->pSerialSave(outfile);
+		return this->info->pSerialSave(outfile);
 	}
 
 
@@ -166,35 +166,40 @@ namespace hw2 {
 		return false;
 	}
 
-	void CList::save(ofstream& outfile)const
+	bool CList::save(ofstream& outfile)const
 	{
 		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		CNode* curr = Head;
 		while (curr!=nullptr)
 		{
-			curr->save(outfile);
+			if(!curr->save(outfile))
+				return false;
 			curr = curr->getNext();
 		}
-
+		return true;
 	}
-	void CList::serialSave(ofstream& outfile)const
+	bool CList::serialSave(ofstream& outfile)const
 	{
 		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		CNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->serialSave(outfile);
+			if (!curr->serialSave(outfile))
+				return false;;
 			curr = curr->getNext();
 		}
+		return true;
 	}
-	void CList::pSerialSave(ofstream& outfile)const
+	bool CList::pSerialSave(ofstream& outfile)const
 	{
 		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		CNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->pSerialSave(outfile);
+			if(!curr->pSerialSave(outfile))
+				return false;
 			curr = curr->getNext();
 		}
+		return true;
 	}
 }

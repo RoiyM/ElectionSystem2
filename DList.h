@@ -27,10 +27,8 @@ namespace hw2 {
 		bool setInfo(District* info);
 		bool setListOfParties(PList* listOfParties);
 
-		void save(ofstream& outfile)const;
-		void pSerialSave(ofstream& outfile)const;
-
-
+		bool save(ofstream& outfile)const;
+		bool pSerialSave(ofstream& outfile)const;
 	};
 
 	class DList
@@ -58,9 +56,7 @@ namespace hw2 {
 
 		friend ostream& operator<<(ostream& os, DList& lst);
 
-		void save(ofstream& outfile)const;
-		void pSerialSave(ofstream& outfile)const;
-
-
+		bool save(ofstream& outfile)const;
+		bool pSerialSave(ofstream& outfile)const;
 	};
 }

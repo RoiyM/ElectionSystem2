@@ -207,6 +207,7 @@ int main()
 			if (!election->save(name))
 			{
 				cout << "ERROR! The Election could not be saved. " << endl;
+				exit(1);
 			}
 			break;
 		case LoadExistElection:
@@ -217,10 +218,15 @@ int main()
 			if (!infile)
 			{
 				cout << "ERROR! The Election could not be loaded! " << endl;
-				exit(0);
+				exit(1);
 			}
 			int type;
 			infile.read(reinterpret_cast<char*>(&type), sizeof(int));
+			if(!infile.good())
+			{
+				cout << "ERROR! The reading has FAILD! " << endl;
+				exit(1);
+			}
 			if (type == 1)
 			{
 				election = new Election(infile);
@@ -229,7 +235,16 @@ int main()
 			{
 				election = new SimpleElection(infile);
 			}
-			election->setP(infile);
+			if(election==nullptr)
+			{
+				cout << "ERROR! The Election could not be loaded! " << endl;
+				exit(1);
+			}
+			if(!election->setP(infile))
+			{
+				cout << "ERROR! The Election could not be loaded! " << endl;
+				exit(1);
+			}
 			break;
 		default:
 			cout << "WRONG INPUT!!" << endl;

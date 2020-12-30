@@ -37,8 +37,8 @@ namespace hw2 {
 		bool addElectors(int num);
 		bool addCandidToDistrict(Citizen* candid, int DId);
 
-		void save(ofstream& outfile)const;
-		void serialSave(ofstream& outfile)const;
-		void pSerialSave(ofstream& outfile)const;
+		bool save(ofstream& outfile)const;
+		bool serialSave(ofstream& outfile)const;
+		bool pSerialSave(ofstream& outfile)const;
 	};
 }

@@ -6,10 +6,11 @@ namespace hw2 {
 	UnifiedDistrict::UnifiedDistrict(ifstream& infile) : District(infile)
 	{
 	}
-	void UnifiedDistrict::save(ofstream& outfile)const
+	bool UnifiedDistrict::save(ofstream& outfile)const
 	{
 		int type = 1;
 		outfile.write(reinterpret_cast<const char*>(&type), sizeof(int));
-		District::save(outfile);
+		return District::save(outfile);
+		return true;
 	}
 }

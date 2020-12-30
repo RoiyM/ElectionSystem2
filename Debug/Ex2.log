@@ -1,15 +1,2 @@
-﻿  CandidPerDistrictList.cpp
-  Citizen.cpp
-  CList.cpp
-  District.cpp
-  DividedDistrict.cpp
-  DList.cpp
-  Election.cpp
-  Helper.cpp
-  Main.cpp
-  Party.cpp
-  PList.cpp
-  SimpleElection.cpp
-  UnifiedDistrict.cpp
-  Generating Code...
+﻿  Main.cpp
   Ex2.vcxproj -> C:\Users\Roiy\source\repos\Ex2\Debug\Ex2.exe

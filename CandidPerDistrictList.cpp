@@ -46,10 +46,10 @@ namespace hw2 {
 		return true;
 	}
 
-	void CPDNode::serialSave(ofstream& outfile)const
+	bool CPDNode::serialSave(ofstream& outfile)const
 	{
 		//outfile.write(reinterpret_cast<const char*>(&districId), sizeof(int));
-		listOfCandidates->serialSave(outfile);
+		return listOfCandidates->serialSave(outfile);
 	}
 
 	//List
@@ -184,15 +184,17 @@ namespace hw2 {
 		}
 		return *this;
 	}
-	void CandidPerDistrictList::serialSave(ofstream& outfile)const
+	bool CandidPerDistrictList::serialSave(ofstream& outfile)const
 	{
 		//outfile.write(reinterpret_cast<const char*>(this->size), sizeof(int)); //write the size
 		CPDNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->serialSave(outfile);
+			if(!curr->serialSave(outfile))
+				return false;
 			curr = curr->getNext();
 		}
+		return true;
 	}
 
 }

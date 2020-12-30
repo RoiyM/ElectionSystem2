@@ -47,15 +47,16 @@ namespace hw2 {
 		return true;
 	}
 
-	void DNode::save(ofstream& outfile)const
+	bool DNode::save(ofstream& outfile)const
 	{
-		this->info->save(outfile);
+		return this->info->save(outfile);
 		//listOfParties->serialSave(outfile);
 	}
-	void DNode::pSerialSave(ofstream& outfile)const
+	bool DNode::pSerialSave(ofstream& outfile)const
 	{
-		this->info->pSerialSave(outfile);
-		this->listOfParties->serialSave(outfile);
+		if(!this->info->pSerialSave(outfile))
+			return false;
+		return this->listOfParties->serialSave(outfile);
 	}
 
 	//List
@@ -185,26 +186,29 @@ namespace hw2 {
 		return os;
 	}
 
-	void DList::save(ofstream& outfile)const
+	bool DList::save(ofstream& outfile)const
 	{
-		outfile.write(reinterpret_cast<const char*>(this->size), sizeof(int)); //write the size
+		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		DNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->save(outfile);
+			if(!curr->save(outfile))
+				return false;
 			curr = curr->getNext();
 		}
-
+		return true;
 	}
-	void DList::pSerialSave(ofstream& outfile)const
+	bool DList::pSerialSave(ofstream& outfile)const
 	{
-		outfile.write(reinterpret_cast<const char*>(this->size), sizeof(int)); //write the size
+		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		DNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->pSerialSave(outfile);
+			if(!curr->pSerialSave(outfile))
+				return false;
 			curr = curr->getNext();
 		}
+		return true;
 	}
 
 }

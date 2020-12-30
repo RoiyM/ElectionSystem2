@@ -149,7 +149,7 @@ namespace hw2 {
 		return os;
 	}
 
-	void District::save(ofstream& outfile)const
+	bool District::save(ofstream& outfile)const
 	{
 		int nLen = strlen(name);
 		outfile.write(reinterpret_cast<const char*>(&nLen), sizeof(int));
@@ -160,11 +160,13 @@ namespace hw2 {
 		//allowedVoters->serialSave(outfile);
 		//elected->serialSave(outfile);
 		outfile.write(reinterpret_cast<const char*>(&countVotes), sizeof(int));
+		return outfile.good();
 	}
-	void District::pSerialSave(ofstream& outfile)const
+	bool District::pSerialSave(ofstream& outfile)const
 	{
-		allowedVoters->serialSave(outfile);
-		elected->serialSave(outfile);
+		if(!allowedVoters->serialSave(outfile))
+			return false;
+		return elected->serialSave(outfile);
 	}
 
 }

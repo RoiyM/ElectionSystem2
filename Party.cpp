@@ -117,7 +117,7 @@ namespace hw2 {
 		return os;
 	}
 
-	void Party::save(ofstream& outfile)const
+	bool Party::save(ofstream& outfile)const
 	{
 		int nLen = strlen(name);
 		outfile.write(reinterpret_cast<const char*>(&nLen), sizeof(int));
@@ -126,14 +126,17 @@ namespace hw2 {
 		outfile.write(reinterpret_cast<const char*>(&amountOfElectors), sizeof(int));
 		//candid->serialSave(outfile);
 		//candidPerDistrict->serialSave(outfile);
+		return outfile.good();
 	}
-	void Party::serialSave(ofstream& outfile)const
+	bool Party::serialSave(ofstream& outfile)const
 	{
 		outfile.write(reinterpret_cast<const char*>(&id), sizeof(int));
+		return outfile.good();
 	}
-	void Party::pSerialSave(ofstream& outfile)const
+	bool Party::pSerialSave(ofstream& outfile)const
 	{
-		candid->serialSave(outfile);
-		candidPerDistrict->serialSave(outfile);
+		if(!candid->serialSave(outfile))
+			return false;
+		return candidPerDistrict->serialSave(outfile);
 	}
 }

@@ -25,7 +25,7 @@ namespace hw2 {
 		bool setDistricId(int districId);
 		bool setListOfCandidates(CList* listOfCandidates);
 
-		void serialSave(ofstream& outfile)const;
+		bool serialSave(ofstream& outfile)const;
 
 	};
 	class CandidPerDistrictList
@@ -52,7 +52,7 @@ namespace hw2 {
 		bool delTail();
 		friend ostream& operator<<(ostream& os, const CandidPerDistrictList& CPD);
 		const CandidPerDistrictList& operator=(const CandidPerDistrictList& other);
-		void serialSave(ofstream& outfile)const;
+		bool serialSave(ofstream& outfile)const;
 
 	};
 }

@@ -22,9 +22,9 @@ namespace hw2 {
 		bool setNext(CNode* next);
 		bool setInfo(Citizen* info);
 
-		void save(ofstream& outfile)const;
-		void serialSave(ofstream& outfile)const;
-		void pSerialSave(ofstream& outfile)const;
+		bool save(ofstream& outfile)const;
+		bool serialSave(ofstream& outfile)const;
+		bool pSerialSave(ofstream& outfile)const;
 	};
 
 	class CList
@@ -53,8 +53,8 @@ namespace hw2 {
 		
 		friend ostream& operator<<(ostream& os, const CList& lst);
 
-		void save(ofstream& outfile)const;
-		void serialSave(ofstream& outfile)const;
-		void pSerialSave(ofstream& outfile)const;
+		bool save(ofstream& outfile)const;
+		bool serialSave(ofstream& outfile)const;
+		bool pSerialSave(ofstream& outfile)const;
 	};
 }

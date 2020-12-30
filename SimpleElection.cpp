@@ -44,13 +44,16 @@ namespace hw2 {
 	bool SimpleElection::save(const char* name) const
 	{
 		ofstream outfile(name, ios::binary | ios::trunc);
-		if (!outfile) {
-			cout << "Error" << endl;
-			exit(-1);
+		if (!outfile) 
+		{
+			return false;
 		}
 		int type = 2;
 		outfile.write(reinterpret_cast<const char*>(&type), sizeof(int)); //write the type
-		saveE(outfile);
+		if (!outfile.good())
+			return false;
+		if (!saveE(outfile))
+			return false;
 		outfile.close();
 		return true;
 	}

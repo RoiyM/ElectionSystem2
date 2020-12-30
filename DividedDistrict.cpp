@@ -7,11 +7,12 @@ namespace hw2 {
 	{
 	}
 
-	void DividedDistrict::save(ofstream& outfile)const
+	bool DividedDistrict::save(ofstream& outfile)const
 	{
 		int type = 2;
 		outfile.write(reinterpret_cast<const char*>(&type), sizeof(int));
-		District::save(outfile);
+		return District::save(outfile);
+		return true;
 	}
 
 }

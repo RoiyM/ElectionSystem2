@@ -44,20 +44,20 @@ namespace hw2 {
 		return true;
 	}
 
-	void PNode::save(ofstream& outfile)const
+	bool PNode::save(ofstream& outfile)const
 	{
-		this->info->save(outfile);
+		if(!this->info->save(outfile))
+			return false;
 		outfile.write(reinterpret_cast<const char*>(&amountOfVotes), sizeof(int));
+		return outfile.good();
 	}
-	void PNode::serialSave(ofstream& outfile)const
+	bool PNode::serialSave(ofstream& outfile)const
 	{
-		this->info->serialSave(outfile);
-
+		return this->info->serialSave(outfile);
 	}
-	void PNode::pSerialSave(ofstream& outfile)const
+	bool PNode::pSerialSave(ofstream& outfile)const
 	{
-		this->info->pSerialSave(outfile);
-
+		return this->info->pSerialSave(outfile);
 	}
 
 
@@ -173,35 +173,41 @@ namespace hw2 {
 		return os;
 	}
 
-	void PList::save(ofstream& outfile)const
+	bool PList::save(ofstream& outfile)const
 	{
-		outfile.write(reinterpret_cast<const char*>(this->size), sizeof(int)); //write the size
+		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		PNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->save(outfile);
+			if(!curr->save(outfile))
+				return false;
 			curr = curr->getNext();
 		}
+		return true;
 	}
-	void PList::serialSave(ofstream& outfile)const
+	bool PList::serialSave(ofstream& outfile)const
 	{
-		outfile.write(reinterpret_cast<const char*>(this->size), sizeof(int)); //write the size
+		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		PNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->serialSave(outfile);
+			if(!curr->serialSave(outfile))
+				return false;
 			curr = curr->getNext();
 		}
+		return true;
 	}
-	void PList::pSerialSave(ofstream& outfile)const
+	bool PList::pSerialSave(ofstream& outfile)const
 	{
-		outfile.write(reinterpret_cast<const char*>(this->size), sizeof(int)); //write the size
+		outfile.write(reinterpret_cast<const char*>(&this->size), sizeof(int)); //write the size
 		PNode* curr = Head;
 		while (curr != nullptr)
 		{
-			curr->pSerialSave(outfile);
+			if(!curr->pSerialSave(outfile))
+				return false;
 			curr = curr->getNext();
 		}
+		return true;
 	}
 
 }

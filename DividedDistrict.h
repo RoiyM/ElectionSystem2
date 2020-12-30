@@ -11,6 +11,6 @@ namespace hw2 {
 			os << "DividedDistrict: " << d.getId() << " - Name: " << d.getName() << ", amount of representative: " << d.getAmountOfRep() << endl;
 			return os;
 		}
-		void save(ofstream& outfile)const;
+		bool save(ofstream& outfile)const;
 	};
 }

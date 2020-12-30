@@ -95,7 +95,7 @@ namespace hw2 {
 		return os;
 	}
 
-	void Citizen::save(ofstream& outfile)const
+	bool Citizen::save(ofstream& outfile)const
 	{
 		int nLen = strlen(name);
 		outfile.write(reinterpret_cast<const char*>(&nLen), sizeof(int));
@@ -105,14 +105,17 @@ namespace hw2 {
 		//int dId = district->getId(); //write the district id of the citizen
 		//outfile.write(reinterpret_cast<const char*>(&dId), sizeof(int));
 		outfile.write(reinterpret_cast<const char*>(&voted), sizeof(bool));
+		return outfile.good();
 	}
-	void Citizen::serialSave(ofstream& outfile)const
+	bool Citizen::serialSave(ofstream& outfile)const
 	{
 		outfile.write(reinterpret_cast<const char*>(&id), sizeof(int));
+		return outfile.good();
 	}
-	void Citizen::pSerialSave(ofstream& outfile)const
+	bool Citizen::pSerialSave(ofstream& outfile)const
 	{
 		int dId = this->district->getId();
 		outfile.write(reinterpret_cast<const char*>(&dId), sizeof(int));
+		return outfile.good();
 	}
 }

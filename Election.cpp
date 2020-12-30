@@ -427,32 +427,40 @@ namespace hw2 {
 	bool Election::saveE(ofstream& outfile) const
 	{
 		outfile.write(reinterpret_cast<const char*>(&this->date), sizeof(Date)); //write the date
-		outfile.write(reinterpret_cast<const char*>(&this->amountOfCitizens), sizeof(int));
-		voterBook->save(outfile);
-		outfile.write(reinterpret_cast<const char*>(&this->amountOfDistricts), sizeof(int));
-		districts->save(outfile);
-		outfile.write(reinterpret_cast<const char*>(&this->amountOfParties), sizeof(int));
-		parties->save(outfile);
 
-		//outfile.write(reinterpret_cast<const char*>(&this->amountOfCitizens), sizeof(int));
-		voterBook->pSerialSave(outfile);
-		//outfile.write(reinterpret_cast<const char*>(&this->amountOfDistricts), sizeof(int));
-		districts->pSerialSave(outfile);
-		//outfile.write(reinterpret_cast<const char*>(&this->amountOfParties), sizeof(int));
-		parties->pSerialSave(outfile);
+		outfile.write(reinterpret_cast<const char*>(&this->amountOfCitizens), sizeof(int));
+		if (!voterBook->save(outfile))
+			return false;
+		outfile.write(reinterpret_cast<const char*>(&this->amountOfDistricts), sizeof(int));
+		if(!districts->save(outfile))
+			return false;
+		outfile.write(reinterpret_cast<const char*>(&this->amountOfParties), sizeof(int));
+		if(!parties->save(outfile))
+			return false;
+
+		if(!voterBook->pSerialSave(outfile))
+			return false;
+		if(!districts->pSerialSave(outfile))
+			return false;
+		if(!parties->pSerialSave(outfile))
+			return false;
+
 		return true;
 	}
 
 	bool Election::save(const char* name) const
 	{
 		ofstream outfile(name, ios::binary | ios::trunc);
-		if (!outfile) {
-			cout << "Error" << endl;
-			exit(-1);
+		if (!outfile) 
+		{
+			return false;
 		}
 		int type = 1;
 		outfile.write(reinterpret_cast<const char*>(&type), sizeof(int)); //write the type
-		saveE(outfile);
+		if (!outfile.good())
+			return false;
+		if (!saveE(outfile))
+			return false;
 		outfile.close();
 		return true;
 	}
@@ -467,6 +475,7 @@ namespace hw2 {
 			curr->getInfo()->setDistrict(findDistrictById(dId));
 			curr = curr->getNext();
 		}
+		return true;
 	}
 	bool Election::setPD(ifstream& infile)
 	{
@@ -494,6 +503,7 @@ namespace hw2 {
 			}
 			curr = curr->getNext();
 		}
+		return true;
 	}
 	bool Election::setPP(ifstream& infile)
 	{
@@ -520,11 +530,13 @@ namespace hw2 {
 			}
 			curr = curr->getNext();
 		}
+		return true;
 	}
 	bool Election::setP(ifstream& infile)
 	{
 		setPC(infile);
 		setPD(infile);
 		setPP(infile);
+		return true;
 	}
 }

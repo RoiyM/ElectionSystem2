@@ -42,8 +42,8 @@ namespace hw2 {
 
 		bool printAddToElected(CList* candidates, int x);
 
-		virtual void save(ofstream& outfile)const;
-		void pSerialSave(ofstream& outfile)const;
+		virtual bool save(ofstream& outfile)const;
+		bool pSerialSave(ofstream& outfile)const;
 
 	};
 }
