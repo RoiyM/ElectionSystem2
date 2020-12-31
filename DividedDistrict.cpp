@@ -1,4 +1,5 @@
 #include "DividedDistrict.h"
+//
 namespace hw2 {
 	DividedDistrict::DividedDistrict(char* name, int amountOfRep):District(name, amountOfRep)
 	{

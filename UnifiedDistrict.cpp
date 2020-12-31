@@ -1,4 +1,5 @@
 #include "UnifiedDistrict.h"
+//
 namespace hw2 {
 	UnifiedDistrict::UnifiedDistrict(char* name, int amountOfRep):District(name, amountOfRep)
 	{

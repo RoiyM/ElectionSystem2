@@ -3,6 +3,7 @@
 #include"CList.h"
 #include"DList.h"
 #include"Helper.h"
+//
 namespace hw2 {
 	class Election
 	{
@@ -46,7 +47,7 @@ namespace hw2 {
 		
 	public:
 		
-		Election(Date date);
+		Election(Date& date);
 		Election(ifstream& infile);
 		virtual ~Election();
 		virtual bool addDistrict(const char* name, int numOfRep, int districtType);// 1

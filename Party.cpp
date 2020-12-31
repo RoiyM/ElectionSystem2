@@ -1,5 +1,6 @@
 #include"Party.h"
 #include"Helper.h"
+//
 namespace hw2 {
 	int Party::countId = 0;
 

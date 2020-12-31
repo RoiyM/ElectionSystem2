@@ -1,6 +1,7 @@
 #pragma once
 #include"Party.h"
 #include<iostream>
+//
 using namespace std;
 namespace hw2 {
 	class PNode

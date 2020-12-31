@@ -4,10 +4,11 @@
 #include"CandidPerDistrictList.h"
 #include<iostream>
 #include<fstream>
+//
 using namespace std;
 
 namespace hw2 {
-	Election::Election(Date date)
+	Election::Election(Date& date)
 	{
 		this->date = date;
 		this->voterBook = new CList();

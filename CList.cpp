@@ -1,4 +1,5 @@
 #include"CList.h"
+//
 namespace hw2 {
 	//Node
 	CNode::CNode(Citizen* info) :next(nullptr), info(info)

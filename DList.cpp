@@ -1,6 +1,7 @@
 #include"DList.h"
 #include <typeinfo>
 #include"PList.h"
+//
 using namespace std;
 namespace hw2 {
 	//Node

@@ -2,6 +2,7 @@
 #include"CandidPerDistrictList.h"
 #include"Citizen.h"
 #include<iostream>
+//
 using namespace std;
 namespace hw2 {
 	class Party

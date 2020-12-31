@@ -1,4 +1,5 @@
 #include"Helper.h"
+//
 namespace hw2 {
 	int strlen(const char* str)
 	{

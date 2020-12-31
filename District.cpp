@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <typeinfo>
+//
 using namespace std;
 namespace hw2 {
 	int District::countId = 0;

@@ -1,2 +1,12 @@
-﻿  Main.cpp
-  Ex2.vcxproj -> C:\Users\Roiy\source\repos\Ex2\Debug\Ex2.exe
+﻿  CandidPerDistrictList.cpp
+  Citizen.cpp
+  CList.cpp
+  District.cpp
+  DividedDistrict.cpp
+  DList.cpp
+  Election.cpp
+  Helper.cpp
+  Main.cpp
+  Party.cpp
+  Generating Code...
+C:\Users\Roiy\source\repos\Ex2\Ex2\Main.cpp : fatal error C1090: PDB API call failed, error code '3': C:\Users\Roiy\source\repos\Ex2\Ex2\Debug\vc142.pdb

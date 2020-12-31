@@ -1,5 +1,6 @@
 #pragma once
 using namespace std;
+//
 namespace hw2 {
 	struct Date {
 		int day, month, year;// date of the elections

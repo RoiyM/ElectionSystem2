@@ -1,6 +1,7 @@
 #pragma once
 #include"CList.h"
 #include<iostream>
+//
 using namespace std;
 namespace hw2 {
 	class District

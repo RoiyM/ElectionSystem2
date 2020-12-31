@@ -1,4 +1,5 @@
 #include "SimpleElection.h"
+//
 namespace hw2 {
 	SimpleElection::SimpleElection(Date date, int numOfElectors) :Election(date)
 	{

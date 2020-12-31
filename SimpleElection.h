@@ -1,5 +1,6 @@
 #pragma once
 #include "Election.h"
+//
 namespace hw2{
 	class SimpleElection : public Election
 	{

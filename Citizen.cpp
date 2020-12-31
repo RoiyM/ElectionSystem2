@@ -1,6 +1,7 @@
 #include "Citizen.h"
 #include "Helper.h"
 #include "District.h"
+//
 namespace hw2 {
 	Citizen::Citizen(char* name, int id, int YOB, District* district) :id(id), yearOfBirth(YOB), voted(false), district(district)
 	{

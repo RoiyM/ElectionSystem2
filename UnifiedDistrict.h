@@ -1,5 +1,6 @@
 #pragma once
 #include "District.h"
+//
 namespace hw2 {
 	class UnifiedDistrict : public District
 	{

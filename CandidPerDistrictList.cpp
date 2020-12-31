@@ -1,4 +1,5 @@
 #include "CandidPerDistrictList.h"
+//
 namespace hw2 {
 	//Node
 	CPDNode::CPDNode(int districId) :districId(districId), next(nullptr)
